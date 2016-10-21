@@ -1,0 +1,902 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content=
+  "width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link href=
+  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  rel="stylesheet" integrity=
+  "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous" type="text/css">
+  <link href="styles.css" rel="stylesheet" type="text/css"><!--
+      Notice the use of  in the tag above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favico.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+
+  <title>Designers News</title>
+</head>
+
+<body>
+  <div id="root">
+    <div id="container">
+      <div id="header-container">
+          <header id=site-header>
+              <div id=header-bar>
+                  <div class="wrap padded">
+                      <div id=header-left-wrap>
+                          <button id=mobile-menu-toggle><span id=mobile-menu-toggle-inner></span></button>
+                          <a href="/" id=header-logo-link>
+                              <svg aria-label=header-logo-shadow height=43 id=svg-header-logo-shadow role=img version="1.1" viewBox="0 0 97 43" width=97>
+                                  <path fill="#245bae" d="m27.17 42.801h69.61l-54.37-42.525-5.131-.075v7.272l-8.483-7.197h-5.405v8.439l-7.372-6.143h-15.91v20.444l27.06 19.785"/>
+                              </svg>
+                              <svg aria-label=header-logo-letters height=23 id=svg-header-logo-letters role=img version="1.1" viewBox="0 0 43 23" width=43>
+                                  <path fill="#fff" d="m19.978 11.582c0-6.765-4.158-11.352-12.08-11.352h-7.821v22.77h7.986c7.689 0 11.913-4.653 11.913-11.418m-5.676.033c0 4.884-2.508 6.996-6.534 6.996h-2.046v-13.992h2.046c3.861 0 6.534 2.211 6.534 6.996m28.15 11.385v-22.77h-5.247v12.738l-8.382-12.738h-5.478v22.77h5.247v-13.629l8.976 13.629h4.884"/>
+                              </svg>
+                              <h1>Designer News</h1>
+                          </a>
+                          <nav id=header-main-navigation>
+                              <div id=header-menu-grouper>
+                                  <a href="/" class=active>Stories</a><a href="/jobs">Jobs</a><a href="/podcast">Podcast</a><a href="http://projects.designernews.co/">Projects</a>
+                                  <div id=header-additional-menu-grouper class=header-drop-navigation-container data-active-size=768>
+                                      <svg aria-label=more-navigation height=5 id=svg-more-navigation role=img version="1.1" viewBox="0 0 21 5" width=21>
+                                          <path d="m5 2.5c0-1.381-1.119-2.5-2.5-2.5-1.381 0-2.5 1.119-2.5 2.5 0 1.381 1.119 2.5 2.5 2.5 1.381 0 2.5-1.119 2.5-2.5m8 0c0-1.381-1.119-2.5-2.5-2.5-1.381 0-2.5 1.119-2.5 2.5 0 1.381 1.119 2.5 2.5 2.5 1.381 0 2.5-1.119 2.5-2.5m8 0c0-1.381-1.119-2.5-2.5-2.5-1.381 0-2.5 1.119-2.5 2.5 0 1.381 1.119 2.5 2.5 2.5 1.381 0 2.5-1.119 2.5-2.5"/>
+                                      </svg>
+                                      <ul id=header-additional-navigation class=header-drop-navigation>
+                                          <li><a href="/about" aria-label="About Designer News">About</a></li>
+                                          <li><a href="/things" aria-label="The various things built for Designer News">Things</a></li>
+                                          <li><a href="/gallery" aria-label="Gallery of Member Avatars">Gallery</a></li>
+                                          <li><a href="/hall_of_fame">Hall of Fame</a></li>
+                                          <li><a href="/advertise">Advertise</a></li>
+                                          <li><a href="/?format=rss">RSS Feed</a></li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </nav>
+                      </div>
+                      <div id=header-right-wrap>
+                          <a href="/login" class=toggle-login id=manage-account-button>
+                              <svg aria-label=account height=18 id=svg-account role=img version="1.1" viewBox="0 0 15 18" width=15>
+                                  <path fill-rule=evenodd d="m13 5.5c0-3.038-2.462-5.5-5.5-5.5-3.038 0-5.5 2.462-5.5 5.5 0 1.75.818 3.31 2.092 4.317-2.429 1.241-4.092 3.768-4.092 6.683 0 .085-.056.678.258 1.341.759.172 1.406.145 1.817-.21-.177-1.711.007-3.195 1.258-4.667 1.472-1.731 2.955-1.912 4.167-1.912 0 0 1.015-.111 2.231.422 1.193.523 2.581 1.668 3.098 3.774.173.705.149 1.414.116 2.383 0 0 .432.694 1.933.382.268-.465.122-.98.122-1.513 0-2.915-1.663-5.442-4.092-6.683 1.274-1.01 2.092-2.567 2.092-4.317m-2 0c0-1.933-1.567-3.5-3.5-3.5-1.933 0-3.5 1.567-3.5 3.5 0 1.933 1.567 3.5 3.5 3.5 1.933 0 3.5-1.567 3.5-3.5"/>
+                              </svg>
+                              <span id=manage-account-label>Log in / Register</span>
+                          </a>
+                          <button id=search-toggle>
+                              <svg aria-label=search height=18 id=svg-search role=img version="1.1" viewBox="0 0 18 18" width=18>
+                                  <path d="m0 6.5c0-3.59 2.91-6.5 6.5-6.5 3.59 0 6.5 2.91 6.5 6.5 0 1.465-.484 2.816-1.302 3.903.041.029.079.06.116.096l5.761 5.564c.395.382.408 1.01.021 1.411-.384.397-1.022.403-1.411.028l-5.761-5.564c-.051-.049-.095-.102-.133-.158-1.067.768-2.377 1.22-3.792 1.22-3.59 0-6.5-2.91-6.5-6.5m11 0c0-2.485-2.01-4.5-4.5-4.5-2.485 0-4.5 2.01-4.5 4.5 0 2.485 2.01 4.5 4.5 4.5 2.485 0 4.5-2.01 4.5-4.5"/>
+                              </svg>
+                          </button>
+                          <a href="/submit" class=toggle-login id=new-story-button><span id=new-story-plus>+</span><span id=new-story-text>New Story</span></a>
+                      </div>
+                  </div>
+              </div>
+              <div id=header-search-container>
+                  <div class="wrap padded">
+                      <form id=header-search-form accept-charset=UTF-8 method=get action="/search" role=search><input name=q id=header-search-field placeholder="Search for posts, comments, and users..." aria-label="Enter your query to search for posts, comments, and users"><input type=hidden name=t value=everything /></form>
+                  </div>
+              </div>
+              <nav id=header-sub-navigation-container>
+                  <div id=mobile-sub-navigation-toggle><span id=mobile-sub-navigation-label> Top Stories </span><span id=mobile-sub-navigation-icon></span></div>
+                  <div class="wrap padded">
+                      <ul id=sub-navigation-list-items>
+                          <div id=sub-navigation-visible-items>
+                              <li>
+                                  <a href="/" class=active>
+                                      Top 
+                                      <svg aria-label=down height=5 id=svg-down role=img version="1.1" viewBox="0 0 6 5" width=6>
+                                          <path d="m.564.819c-.312-.452-.113-.819.427-.819h4.02c.547 0 .735.371.427.819l-1.871 2.717c-.312.452-.82.448-1.129 0l-1.871-2.717"/>
+                                      </svg>
+                                  </a>
+                                  <ul class=sub-navigation-hover-dropdown id=sub-navigation-top-dropdown>
+                                      <li><a href="/" class=active>Today</a></li>
+                                      <li><a href="/week">Week</a></li>
+                                      <li><a href="/month">Month</a></li>
+                                      <li><a href="/year">Year</a></li>
+                                  </ul>
+                              </li>
+                              <li><a href="/new">Recent</a></li>
+                              <li><a href="/starred">Starred</a></li>
+                              <li>
+                                  <a href="/badges">
+                                      Badges 
+                                      <svg aria-label=down height=5 id=svg-down role=img version="1.1" viewBox="0 0 6 5" width=6>
+                                          <path d="m.564.819c-.312-.452-.113-.819.427-.819h4.02c.547 0 .735.371.427.819l-1.871 2.717c-.312.452-.82.448-1.129 0l-1.871-2.717"/>
+                                      </svg>
+                                  </a>
+                                  <ul class=sub-navigation-hover-dropdown id=sub-navigation-badges-dropdown>
+                                      <li>
+                                          <a href="/badges/apple">
+                                              <svg aria-label=apple-story-badge class=badge-link-icon height=50 id=svg-apple-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <circle fill="#c3c9d2" cx=25 cy=25 r=25 />
+                                                  <g fill="#121720">
+                                                      <path d="m17.05 26c0 1.981 0 2.776 0 4.992h-7.06c-4.01 0-6.707 1.667-7.554 4.784 3.805 8.184 12.721 14.225 22.349 14.225 10 0 18.622-5.594 22.776-14.225-1.555-2.738-3.597-4.784-7.547-4.784h-6.967c0-.757 0-4.474 0-4.992-2.693 0-5.81 0-8.88 0h-7.119"/>
+                                                      <path d="m33.992 12c-.129 1.955-1.755 3.5-3.742 3.5-1.987 0-3.613-1.545-3.742-3.5h-3.02c-.129 1.955-1.755 3.5-3.742 3.5-1.987 0-3.613-1.545-3.742-3.5h-1.508v-1h1.575c.347-1.712 1.861-3 3.675-3 1.814 0 3.328 1.288 3.675 3h3.15c.347-1.712 1.861-3 3.675-3 1.814 0 3.328 1.288 3.675 3h1.575v1h-1.508m-14.242 2.75c1.657 0 3-1.343 3-3 0-1.657-1.343-3-3-3-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3m10.5 0c1.657 0 3-1.343 3-3 0-1.657-1.343-3-3-3-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3"/>
+                                                  </g>
+                                                  </g>
+                                              </svg>
+                                              Apple 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/ask">
+                                              <svg aria-label=ask-story-badge class=badge-link-icon height=50 id=svg-ask-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <path d="m25 50c13.807 0 25-11.193 25-25 0-13.807-11.193-25-25-25-13.807 0-25 11.193-25 25 0 13.807 11.193 25 25 25" fill="#03a95c"/>
+                                                  <path d="m14.06 29.26h4.403l.595 1.819h3.519l-4.828-12.58h-2.771l-4.981 12.58h3.485l.578-1.819m3.57-2.55h-2.771l1.36-4.386 1.411 4.386m12.203-2.414c-.238-2.482-2.38-2.975-3.621-2.975-1.955 0-3.655 1.241-3.655 3.196 0 1.275 1.02 2.074 2.244 2.465 1.802.697 2.499.782 2.499 1.428 0 .459-.51.731-.986.731-.119 0-.952 0-1.071-.867h-2.805c.255 2.482 2.414 3.128 3.842 3.128 2.091 0 3.842-1.224 3.842-3.298 0-2.04-1.7-2.516-3.298-2.958-.748-.221-1.445-.51-1.445-.935 0-.255.204-.629.799-.629.833 0 .867.51.884.714h2.771m1.102 6.783h2.822v-4.539l2.703 4.539h3.196l-3.451-5.287 3.553-4.148h-3.349l-2.652 3.417v-6.562h-2.822v12.58" fill="#fff"/>
+                                              </svg>
+                                              Ask DN 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/ama">
+                                              <svg aria-label=ama-story-badge class=badge-link-icon height=50 id=svg-ama-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <path d="m25 50c13.807 0 25-11.193 25-25 0-13.807-11.193-25-25-25-13.807 0-25 11.193-25 25 0 13.807 11.193 25 25 25" fill="#dd3723"/>
+                                                  <path d="m11.246 28.502h3.626l.49 1.498h2.898l-3.976-10.36h-2.282l-4.102 10.36h2.87l.476-1.498m2.94-2.1h-2.282l1.12-3.612 1.162 3.612m7.774 3.598l-.084-7.756 2.24 7.756h1.75l2.24-7.756-.084 7.756h2.436v-10.36h-3.556l-1.89 6.678-1.946-6.678h-3.542v10.36h2.436m13.11-1.498h3.626l.49 1.498h2.898l-3.976-10.36h-2.282l-4.102 10.36h2.87l.476-1.498m2.94-2.1h-2.282l1.12-3.612 1.162 3.612" fill="#fff"/>
+                                              </svg>
+                                              AMA 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/css">
+                                              <svg aria-label=-story-badge class=badge-link-icon height=50 id=svg--story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <path d="m25 50c13.807 0 25-11.193 25-25 0-13.807-11.193-25-25-25-13.807 0-25 11.193-25 25 0 13.807 11.193 25 25 25" fill="#266edc"/>
+                                                  <path d="m14.08 15.09c0 0 0 27.512 0 32.405 3.3 1.605 7.01 2.506 10.923 2.506 13.807 0 25-11.193 25-25 0-3.521-.728-6.872-2.041-9.911-3.039 0-33.881 0-33.881 0" fill="#174fa3"/>
+                                                  <path d="m25.736 27.18c-.144.312-.72 1.5-2.136 1.5-1.476 0-2.388-1.296-2.388-2.64 0-1.26.852-2.592 2.376-2.592 1.224 0 1.896.888 2.148 1.548h2.376c-.24-1.392-1.728-3.54-4.512-3.54-2.904 0-4.656 2.328-4.656 4.596 0 2.4 1.896 4.62 4.68 4.62 2.148 0 3.972-1.392 4.488-3.492h-2.376m3.148.384c-.06 1.74.876 3.108 3.204 3.108 2.352 0 3.096-1.428 3.096-2.844 0-1.032-.42-1.8-2.076-2.544-1.596-.72-1.836-.828-1.836-1.236 0-.42.384-.696.78-.696.696 0 .768.564.816.864h2.244c-.036-2.136-1.764-2.76-2.988-2.76-1.488 0-3.108.948-3.108 2.736 0 1.668 1.548 2.292 2.172 2.544 1.368.576 1.74.72 1.74 1.188 0 .408-.324.852-.864.852-.288 0-.924-.18-.924-1.212h-2.256m6.976 0c-.06 1.74.876 3.108 3.204 3.108 2.352 0 3.096-1.428 3.096-2.844 0-1.032-.42-1.8-2.076-2.544-1.596-.72-1.836-.828-1.836-1.236 0-.42.384-.696.78-.696.696 0 .768.564.816.864h2.244c-.036-2.136-1.764-2.76-2.988-2.76-1.488 0-3.108.948-3.108 2.736 0 1.668 1.548 2.292 2.172 2.544 1.368.576 1.74.72 1.74 1.188 0 .408-.324.852-.864.852-.288 0-.924-.18-.924-1.212h-2.256" fill="#fff"/>
+                                              </svg>
+                                              CSS 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/discussion">
+                                              <svg aria-label=discussion-story-badge class=badge-link-icon height=51 id=svg-discussion-story-badge role=img version="1.1" viewBox="0 0 51 51" width=51>
+                                                  <circle fill="#dbe0e8" cx=26 cy=26 r=25 />
+                                                  <path fill-rule=evenodd d="m33.674 24.568c0 0-.106.329-1.101.963l-9.179 3.661c0 0-.056.113 0 .145 1.869 1.064 5.606 3.192 5.606 3.192l-3.209 5.621c0 0-.294.531.529.692.823.161 6.703.811 6.703.811 0 0-.555 2.115-4.02 2.5-3.468.384-5.213 0-5.213 0 0 0-.562 1.88.242 2.864.804.983-1.419 4.996-1.64 5.712.925.148 11.195 1.884 19.902-5.812 8.66-7.617 8.707-16.93 8.707-18.32 0-6.164-1.613-11.912-6.482-17.376 0 0-6.579 6.02-10.841 15.348m8.604 4.444c1.518 0 2.749-1.231 2.749-2.748 0-1.518-1.231-2.748-2.749-2.748-1.518 0-2.749 1.231-2.749 2.748 0 1.518 1.231 2.748 2.749 2.748m-26.755 7.434c0 0-5.859-8.905-6.228-14.708 0 0 17.596-7.774 24.19-19.573-1.773-.604-4.279-1.167-7.49-1.167-3.211 0-10.533.538-17.15 6.837-8.224 7.824-7.842 16.744-7.842 19.15 0 1.926.513 4.16.513 4.16 0 0 8.633 4.985 14.01 5.299" fill="#9099a7"/>
+                                              </svg>
+                                              Discussions 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/podcast">
+                                              <svg aria-label=podcast-story-badge class=badge-link-icon height=50 id=svg-podcast-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <circle fill="#f3b115" cx=25 cy=25 r=25 />
+                                                  <rect fill="#eceef1" x=17 y=9 width=16 height=26 rx=8 />
+                                                  <path d="m19 17v-.003c0-3.312 2.693-5.997 6-5.997 3.314 0 6 2.687 6 5.997v.003h-4v2h4v2h-4v2h4v2h-4v2h4v.003c0 3.312-2.693 5.997-6 5.997-3.314 0-6-2.687-6-5.997v-.003h4v-2h-4v-2h4v-2h-4v-2h4v-2h-4m7 17.938c3.94-.493 7-3.857 7-7.933v-10.01c0-4.407-3.582-7.995-8-7.995-4.409 0-8 3.58-8 7.995v10.01c0 4.07 3.054 7.44 7 7.933v5.062h2v-5.062m-5 5.062h8v2h-8v-2" fill="#121821"/>
+                                              </svg>
+                                              Podcasts 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/show">
+                                              <svg aria-label=show-story-badge class=badge-link-icon height=50 id=svg-show-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <circle fill="#d9392b" cx=25 cy=25 r=25 />
+                                                  <path d="m6.103 26.626c-.07 2.03 1.022 3.626 3.738 3.626 2.744 0 3.612-1.666 3.612-3.318 0-1.204-.49-2.1-2.422-2.968-1.862-.84-2.142-.966-2.142-1.442 0-.49.448-.812.91-.812.812 0 .896.658.952 1.01h2.618c-.042-2.492-2.058-3.22-3.486-3.22-1.736 0-3.626 1.106-3.626 3.192 0 1.946 1.806 2.674 2.534 2.968 1.596.672 2.03.84 2.03 1.386 0 .476-.378.994-1.01.994-.336 0-1.078-.21-1.078-1.414h-2.632m8.512 3.43h2.324v-4.312c0-.196 0-.574.168-.91.154-.336.49-.63 1.134-.63.504 0 .812.196 1.01.49.182.294.238.7.238 1.134v4.228h2.324v-4.34c0-.994-.112-1.918-.532-2.59-.42-.686-1.12-1.106-2.31-1.106-.826 0-1.61.28-2.03.98v-.98-2.324h-2.324v10.36m8.484-3.892c0 1.904 1.358 4.13 4.186 4.13 2.828 0 4.186-2.226 4.186-4.13 0-1.904-1.358-4.13-4.186-4.13-2.828 0-4.186 2.226-4.186 4.116v.014m2.324 0c0-1.134.854-1.96 1.862-1.96 1.01 0 1.862.826 1.862 1.96 0 1.134-.854 1.96-1.862 1.96-1.01 0-1.862-.826-1.862-1.946v-.014m9 3.892h2.156l1.302-5.03 1.33 5.03h2.156l2.38-7.77h-2.394l-1.162 4.83-1.316-4.83h-1.96l-1.274 4.83-1.19-4.83h-2.408l2.38 7.77" fill="#ecedf0"/>
+                                              </svg>
+                                              Show DN 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/design">
+                                              <svg aria-label=design-story-badge class=badge-link-icon height=50 id=svg-design-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <circle fill="#f3b114" cx="25.5" cy="25.5" r=25 />
+                                                  <path d="m12.353 13.177c.757-.715 1.571-1.885 4.256-2.177h17.793c1.888.127 3.536 1.119 4.469 2.469 1.092 1.636 1.13 2.906 1.13 3.531h-28.994c-.03-1.404.552-2.849 1.346-3.823" fill="#ecedf0"/>
+                                                  <path d="m12.603 38.1c-1.159-1.25-1.497-2.61-1.603-3.695v-17.401h29v17.35c-.174 2.129-1.15 3.283-1.787 3.939-.683.627-1.934 1.6-3.898 1.711h-17.766c-1.724-.198-2.802-.785-3.947-1.904" fill="#fff"/>
+                                              </svg>
+                                              Site Design 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/type">
+                                              <svg aria-label=type-story-badge class=badge-link-icon height=50 id=svg-type-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <circle fill="#39b86f" cx=25 cy=25 r=25 />
+                                                  <path d="m21.572 41.05h7v-22.592h5.918v-6.469h-18.941v6.524h6.02v22.537" fill="#fff"/>
+                                              </svg>
+                                              Typography 
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="/badges/video">
+                                              <svg aria-label=video-story-badge class=badge-link-icon height=50 id=svg-video-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                                  <circle fill="#121720" cx="25.5" cy=25 r=25 />
+                                                  <rect fill="#dbdfe4" x=9 y=13 width=33 height="4.5" rx=3 ry="2.25"/>
+                                                  <path fill="#fff" d="m11 17.5h29v20.5h-29z"/>
+                                                  <path d="m25.75 42.5c1.243 0 2.25-1.01 2.25-2.25 0-1.243-1.01-2.25-2.25-2.25-1.243 0-2.25 1.01-2.25 2.25 0 1.243 1.01 2.25 2.25 2.25m0-.75c.828 0 1.5-.672 1.5-1.5 0-.828-.672-1.5-1.5-1.5-.828 0-1.5.672-1.5 1.5 0 .828.672 1.5 1.5 1.5" fill="#c3c9d2"/>
+                                              </svg>
+                                              Videos 
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </li>
+                          </div>
+                          <li id=sub-navigation-view-more>More</li>
+                          <div id=sub-navigation-additional-items></div>
+                      </ul>
+                  </div>
+              </nav>
+          </header>
+          <div id=header-account-container>
+              <div class="wrap padded">
+                  <form accept-charset=UTF-8 action="/user_sessions.json" class=new_user_session id=header-login-form method=post>
+                      <div style="margin:0;padding:0;display:inline"><input name=utf8 type=hidden value="&#x2713;"/><input name=authenticity_token type=hidden value="gKoizU/idVxpa8I/NQk/lNUOmqYeakoGZbPMME1kd4Y="/></div>
+                      <input class=standard-text-field id=user_session_login name="user_session[login]" placeholder="Email address" size=30 type=email /><input class=standard-text-field id=user_session_password name="user_session[password]" placeholder=Password size=30 type=password />
+                      <div class=submit-area><a href="/account_help/new" id=account-help-link>I need help.</a><button type=submit class="standard-button spin-button yellow" id=login-submit-button><span class=spin-button-spinner></span><span class=spin-button-text>Log in</span></button></div>
+                  </form>
+                  <div id=header-register-container>
+                      <h2>Join Us</h2>
+                      <p>Designer News is where the design community meets.</p>
+                      <a href="/signup" class="standard-button green">Register now</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div id="page-container" class="wrap padded has-sidebar">
+          <div id=page-main-content>
+              <div id=page-main-content-inner role=main>
+                  <div class=montana-list id=top-stories-list>
+                      <header id=frontpage-welcome-hero class=montana-hero>
+                          <div class=montana-hero-info>
+                              <h2>Designer News <span>is where the design community meets.</span></h2>
+                          </div>
+                          <div class=montana-hero-prompt-container><a href="/signup" class="standard-button green montana-hero-prompt-button">Join us</a></div>
+                      </header>
+                      <ul class=montana-list-items>
+                          <li class="story-list-item montana-list-item " data-story-id=75738>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/discussion">
+                                      <svg aria-label=discussion-story-badge height=51 id=svg-discussion-story-badge role=img version="1.1" viewBox="0 0 51 51" width=51>
+                                          <circle fill="#dbe0e8" cx=26 cy=26 r=25 />
+                                          <path fill-rule=evenodd d="m33.674 24.568c0 0-.106.329-1.101.963l-9.179 3.661c0 0-.056.113 0 .145 1.869 1.064 5.606 3.192 5.606 3.192l-3.209 5.621c0 0-.294.531.529.692.823.161 6.703.811 6.703.811 0 0-.555 2.115-4.02 2.5-3.468.384-5.213 0-5.213 0 0 0-.562 1.88.242 2.864.804.983-1.419 4.996-1.64 5.712.925.148 11.195 1.884 19.902-5.812 8.66-7.617 8.707-16.93 8.707-18.32 0-6.164-1.613-11.912-6.482-17.376 0 0-6.579 6.02-10.841 15.348m8.604 4.444c1.518 0 2.749-1.231 2.749-2.748 0-1.518-1.231-2.748-2.749-2.748-1.518 0-2.749 1.231-2.749 2.748 0 1.518 1.231 2.748 2.749 2.748m-26.755 7.434c0 0-5.859-8.905-6.228-14.708 0 0 17.596-7.774 24.19-19.573-1.773-.604-4.279-1.167-7.49-1.167-3.211 0-10.533.538-17.15 6.837-8.224 7.824-7.842 16.744-7.842 19.15 0 1.926.513 4.16.513 4.16 0 0 8.633 4.985 14.01 5.299" fill="#9099a7"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 14 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Join Netflix and HTC Creative Labs at Design on the Rocks | Thursday Oct 27 | @ The Piranha Shop, Seattle WA"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75738-join-netflix-and-htc-creative-labs-at-design-on-the-rocks--thursday-oct-27---the-piranha-shop-seattle-wa'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">13</span><span class="story-upvote-button-number upvoted-number">14</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://nvite.com/DesignOnTheRocks/ba62" alt="Join Netflix and HTC Creative Labs at Design on the Rocks | Thursday Oct 27 | @ The Piranha Shop, Seattle WA" class=montana-item-title story_title="Join Netflix and HTC Creative Labs at Design on the Rocks | Thursday Oct 27 | @ The Piranha Shop, Seattle WA"> Join Netflix and HTC Creative Labs at Design on the Rocks | Thursday Oct 27 | @ The Piranha Shop, Seattle WA <span class=list-story-domain>(nvite.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75738-join-netflix-and-htc-creative-labs-at-design-on-the-rocks--thursday-oct-27---the-piranha-shop-seattle-wa" class=list-story-comment-count>3 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1477001357 title="2016-10-20T22:09:17Z">7 hours ago</abbr><span>from <a href="/users/52778/michaela-wagoner" data-card=52778>Michaela Wagoner</a>, UI Motion Designer, Netflix</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75708>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/discussion">
+                                      <svg aria-label=discussion-story-badge height=51 id=svg-discussion-story-badge role=img version="1.1" viewBox="0 0 51 51" width=51>
+                                          <circle fill="#dbe0e8" cx=26 cy=26 r=25 />
+                                          <path fill-rule=evenodd d="m33.674 24.568c0 0-.106.329-1.101.963l-9.179 3.661c0 0-.056.113 0 .145 1.869 1.064 5.606 3.192 5.606 3.192l-3.209 5.621c0 0-.294.531.529.692.823.161 6.703.811 6.703.811 0 0-.555 2.115-4.02 2.5-3.468.384-5.213 0-5.213 0 0 0-.562 1.88.242 2.864.804.983-1.419 4.996-1.64 5.712.925.148 11.195 1.884 19.902-5.812 8.66-7.617 8.707-16.93 8.707-18.32 0-6.164-1.613-11.912-6.482-17.376 0 0-6.579 6.02-10.841 15.348m8.604 4.444c1.518 0 2.749-1.231 2.749-2.748 0-1.518-1.231-2.748-2.749-2.748-1.518 0-2.749 1.231-2.749 2.748 0 1.518 1.231 2.748 2.749 2.748m-26.755 7.434c0 0-5.859-8.905-6.228-14.708 0 0 17.596-7.774 24.19-19.573-1.773-.604-4.279-1.167-7.49-1.167-3.211 0-10.533.538-17.15 6.837-8.224 7.824-7.842 16.744-7.842 19.15 0 1.926.513 4.16.513 4.16 0 0 8.633 4.985 14.01 5.299" fill="#9099a7"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 27 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Should your team be using Figma?"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75708-should-your-team-be-using-figma'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">26</span><span class="story-upvote-button-number upvoted-number">27</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://medium.com/prolific-interactive/is-figma-for-us-7dc1e994fd35#.d1sevxu39" alt="Should your team be using Figma?" class=montana-item-title story_title="Should your team be using Figma?"> Should your team be using Figma? <span class=list-story-domain>(medium.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75708-should-your-team-be-using-figma" class=list-story-comment-count>6 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476969696 title="2016-10-20T13:21:36Z">12 hours ago</abbr><span>from <a href="/users/1721/chris-meyers" data-card=1721>Chris Meyers</a>, Lead Designer @ Prolific Interactive</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75711>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/design">
+                                      <svg aria-label=design-story-badge height=50 id=svg-design-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#f3b114" cx="25.5" cy="25.5" r=25 />
+                                          <path d="m12.353 13.177c.757-.715 1.571-1.885 4.256-2.177h17.793c1.888.127 3.536 1.119 4.469 2.469 1.092 1.636 1.13 2.906 1.13 3.531h-28.994c-.03-1.404.552-2.849 1.346-3.823" fill="#ecedf0"/>
+                                          <path d="m12.603 38.1c-1.159-1.25-1.497-2.61-1.603-3.695v-17.401h29v17.35c-.174 2.129-1.15 3.283-1.787 3.939-.683.627-1.934 1.6-3.898 1.711h-17.766c-1.724-.198-2.802-.785-3.947-1.904" fill="#fff"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 20 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Site Design: Herman Miller – Aeron Remastered"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75711-site-design-herman-miller--aeron-remastered'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">19</span><span class="story-upvote-button-number upvoted-number">20</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://hermanmiller.com/aeron" alt="Site Design: Herman Miller – Aeron Remastered" class=montana-item-title story_title="Site Design: Herman Miller – Aeron Remastered"> Site Design: Herman Miller – Aeron Remastered <span class=list-story-domain>(hermanmiller.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75711-site-design-herman-miller--aeron-remastered" class=list-story-comment-count>6 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476970664 title="2016-10-20T13:37:44Z">10 hours ago</abbr><span>from <a href="/users/5696/ryan-ganss" data-card=5696>Ryan Ganss</a>, Senior UI Designer at Herman Miller</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75697>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/video">
+                                      <svg aria-label=video-story-badge height=50 id=svg-video-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#121720" cx="25.5" cy=25 r=25 />
+                                          <rect fill="#dbdfe4" x=9 y=13 width=33 height="4.5" rx=3 ry="2.25"/>
+                                          <path fill="#fff" d="m11 17.5h29v20.5h-29z"/>
+                                          <path d="m25.75 42.5c1.243 0 2.25-1.01 2.25-2.25 0-1.243-1.01-2.25-2.25-2.25-1.243 0-2.25 1.01-2.25 2.25 0 1.243 1.01 2.25 2.25 2.25m0-.75c.828 0 1.5-.672 1.5-1.5 0-.828-.672-1.5-1.5-1.5-.828 0-1.5.672-1.5 1.5 0 .828.672 1.5 1.5 1.5" fill="#c3c9d2"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 42 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Pixar animators spent 5 years making thisbeautiful short film in their spare time "'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75697-pixar-animators-spent-5-years-making-thisbeautiful-short-film-in-their-spare-time-'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">41</span><span class="story-upvote-button-number upvoted-number">42</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://vimeo.com/187257744" alt="Pixar animators spent 5 years making thisbeautiful short film in their spare time " class=montana-item-title story_title="Pixar animators spent 5 years making thisbeautiful short film in their spare time "> Pixar animators spent 5 years making thisbeautiful short film in their spare time <span class=list-story-domain>(vimeo.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75697-pixar-animators-spent-5-years-making-thisbeautiful-short-film-in-their-spare-time-" class=list-story-comment-count>6 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476953475 title="2016-10-20T08:51:15Z">18 hours ago</abbr><span>from <a href="/users/4182/pedro-pinto" data-card=4182>Pedro Pinto</a>, Marketing &amp; Design</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75698>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/design">
+                                      <svg aria-label=design-story-badge height=50 id=svg-design-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#f3b114" cx="25.5" cy="25.5" r=25 />
+                                          <path d="m12.353 13.177c.757-.715 1.571-1.885 4.256-2.177h17.793c1.888.127 3.536 1.119 4.469 2.469 1.092 1.636 1.13 2.906 1.13 3.531h-28.994c-.03-1.404.552-2.849 1.346-3.823" fill="#ecedf0"/>
+                                          <path d="m12.603 38.1c-1.159-1.25-1.497-2.61-1.603-3.695v-17.401h29v17.35c-.174 2.129-1.15 3.283-1.787 3.939-.683.627-1.934 1.6-3.898 1.711h-17.766c-1.724-.198-2.802-.785-3.947-1.904" fill="#fff"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 26 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "GT America"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75698-gt-america'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">25</span><span class="story-upvote-button-number upvoted-number">26</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://gt-america.com/" alt="GT America" class=montana-item-title story_title="GT America"> GT America <span class=list-story-domain>(gt-america.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75698-gt-america" class=list-story-comment-count>5 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476954714 title="2016-10-20T09:11:54Z">19 hours ago</abbr><span>from <a href="/users/15667/rocco-barbaro" data-card=15667>Rocco Barbaro</a>, Visual Designer @ Rokivo</span></div>
+                              </div>
+                          </li>
+                          <div class="mobile-sidebar-block sidebar-ad-block-outer" data-mobile-sidebar-collapsable=false data-mobile-sidebar-collapsed=false data-mobile-sidebar=ad_block>
+                              <div class="mobile-sidebar-block-inner sidebar-ad-block"></div>
+                          </div>
+                          <li class="story-list-item montana-list-item " data-story-id=75685>
+                              <div class=list-story-badge-grouper>
+                                  <svg aria-label=sponsored-story-badge height=50 id=svg-sponsored-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                      <circle fill="#24be6f" cx=25 cy=25 r=25 />
+                                      <path d="m5.502 26.24c-.048 1.377.693 2.46 2.537 2.46 1.862 0 2.451-1.131 2.451-2.252 0-.817-.332-1.425-1.644-2.01-1.263-.57-1.454-.656-1.454-.978 0-.333.304-.551.617-.551.551 0 .608.447.646.684h1.777c-.028-1.691-1.397-2.185-2.366-2.185-1.178 0-2.46.751-2.46 2.166 0 1.321 1.226 1.815 1.72 2.01 1.083.456 1.377.57 1.377.941 0 .323-.256.674-.684.674-.228 0-.732-.142-.732-.959h-1.786m5.826 4.085h1.577v-1.758-.475c.19.2.636.656 1.587.656 1.501 0 2.565-1.245 2.565-2.765 0-1.226-.703-2.869-2.574-2.869-.807 0-1.33.361-1.672.76v-.579h-1.482v7.03m4.152-4.389c0 .665-.494 1.34-1.321 1.34-.37 0-.703-.152-.941-.39-.237-.237-.38-.57-.38-.941 0-.38.143-.722.37-.959.238-.247.57-.399.95-.399.865 0 1.321.722 1.321 1.34v.009m2.273-.009c0 1.292.922 2.802 2.84 2.802 1.919 0 2.841-1.511 2.841-2.802 0-1.292-.922-2.803-2.841-2.803-1.919 0-2.84 1.511-2.84 2.793v.009m1.577 0c0-.77.579-1.33 1.263-1.33.684 0 1.264.561 1.264 1.33 0 .77-.579 1.33-1.264 1.33-.684 0-1.263-.56-1.263-1.32v-.009m5.05 2.641h1.577v-2.869c0-.541.123-1.102.902-1.102.703 0 .826.513.826 1.093v2.878h1.577v-3.296c0-.713-.181-2.157-1.957-2.157-.941 0-1.273.485-1.454.741v-.56h-1.473v5.272m9.845-3.79c-.133-1.387-1.33-1.663-2.023-1.663-1.093 0-2.043.694-2.043 1.786 0 .712.57 1.159 1.254 1.377 1.01.39 1.396.437 1.396.798 0 .256-.285.409-.551.409-.067 0-.532 0-.599-.485h-1.568c.143 1.387 1.349 1.748 2.147 1.748 1.169 0 2.147-.684 2.147-1.843 0-1.14-.95-1.406-1.843-1.653-.418-.123-.807-.285-.807-.522 0-.143.114-.352.447-.352.465 0 .484.285.494.399h1.548m.753 1.149c0 1.292.922 2.802 2.84 2.802 1.919 0 2.841-1.511 2.841-2.802 0-1.292-.922-2.803-2.841-2.803-1.919 0-2.84 1.511-2.84 2.793v.009m1.577 0c0-.77.58-1.33 1.264-1.33.684 0 1.264.561 1.264 1.33 0 .77-.579 1.33-1.264 1.33-.684 0-1.264-.56-1.264-1.32v-.009m5.04 2.641h1.577v-2.831c0-.741.38-1.035 1.188-1.035h.057v-1.587c-.912 0-1.188.485-1.34.77v-.589h-1.482v5.272" fill="#fff"/>
+                                  </svg>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 16 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Sponsor: Toptal — Connecting You with the World&#x27;s Most Talented Web and UX Designers"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75685-sponsor-toptal--connecting-you-with-the-worlds-most-talented-web-and-ux-designers'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">15</span><span class="story-upvote-button-number upvoted-number">16</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <span class=story-mobile-sponsored-label>Sponsor</span><a href="http://www.launchbit.com/taz/11277-6623-111" alt="Sponsor: Toptal — Connecting You with the World&#x27;s Most Talented Web and UX Designers" class=montana-item-title story_title="Sponsor: Toptal — Connecting You with the World&#x27;s Most Talented Web and UX Designers"> Toptal — Connecting You with the World&#x27;s Most Talented Web and UX Designers </a>
+                                  <div class=montana-item-meta><a href="/stories/75685-sponsor-toptal--connecting-you-with-the-worlds-most-talented-web-and-ux-designers" class=list-story-comment-count>0 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476915714 title="2016-10-19T22:21:54Z">21 hours ago</abbr><span>from <a href="/users/1709/maxwell-lind" data-card=1709>Maxwell Lind</a>, Community Manager at Designer News</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75732>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/discussion">
+                                      <svg aria-label=discussion-story-badge height=51 id=svg-discussion-story-badge role=img version="1.1" viewBox="0 0 51 51" width=51>
+                                          <circle fill="#dbe0e8" cx=26 cy=26 r=25 />
+                                          <path fill-rule=evenodd d="m33.674 24.568c0 0-.106.329-1.101.963l-9.179 3.661c0 0-.056.113 0 .145 1.869 1.064 5.606 3.192 5.606 3.192l-3.209 5.621c0 0-.294.531.529.692.823.161 6.703.811 6.703.811 0 0-.555 2.115-4.02 2.5-3.468.384-5.213 0-5.213 0 0 0-.562 1.88.242 2.864.804.983-1.419 4.996-1.64 5.712.925.148 11.195 1.884 19.902-5.812 8.66-7.617 8.707-16.93 8.707-18.32 0-6.164-1.613-11.912-6.482-17.376 0 0-6.579 6.02-10.841 15.348m8.604 4.444c1.518 0 2.749-1.231 2.749-2.748 0-1.518-1.231-2.748-2.749-2.748-1.518 0-2.749 1.231-2.749 2.748 0 1.518 1.231 2.748 2.749 2.748m-26.755 7.434c0 0-5.859-8.905-6.228-14.708 0 0 17.596-7.774 24.19-19.573-1.773-.604-4.279-1.167-7.49-1.167-3.211 0-10.533.538-17.15 6.837-8.224 7.824-7.842 16.744-7.842 19.15 0 1.926.513 4.16.513 4.16 0 0 8.633 4.985 14.01 5.299" fill="#9099a7"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 7 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "How marketers and designers can work better together."'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75732-how-marketers-and-designers-can-work-better-together'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">6</span><span class="story-upvote-button-number upvoted-number">7</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://medium.com/wake-blog/how-marketers-and-designers-can-work-better-together-4537549df6ab" alt="How marketers and designers can work better together." class=montana-item-title story_title="How marketers and designers can work better together."> How marketers and designers can work better together. <span class=list-story-domain>(medium.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75732-how-marketers-and-designers-can-work-better-together" class=list-story-comment-count>1 comment</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476992530 title="2016-10-20T19:42:10Z">8 hours ago</abbr><span>from <a href="/users/51648/breena-fain" data-card=51648>Breena Fain</a>, Content Strategist</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75714>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/show">
+                                      <svg aria-label=show-story-badge height=50 id=svg-show-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#d9392b" cx=25 cy=25 r=25 />
+                                          <path d="m6.103 26.626c-.07 2.03 1.022 3.626 3.738 3.626 2.744 0 3.612-1.666 3.612-3.318 0-1.204-.49-2.1-2.422-2.968-1.862-.84-2.142-.966-2.142-1.442 0-.49.448-.812.91-.812.812 0 .896.658.952 1.01h2.618c-.042-2.492-2.058-3.22-3.486-3.22-1.736 0-3.626 1.106-3.626 3.192 0 1.946 1.806 2.674 2.534 2.968 1.596.672 2.03.84 2.03 1.386 0 .476-.378.994-1.01.994-.336 0-1.078-.21-1.078-1.414h-2.632m8.512 3.43h2.324v-4.312c0-.196 0-.574.168-.91.154-.336.49-.63 1.134-.63.504 0 .812.196 1.01.49.182.294.238.7.238 1.134v4.228h2.324v-4.34c0-.994-.112-1.918-.532-2.59-.42-.686-1.12-1.106-2.31-1.106-.826 0-1.61.28-2.03.98v-.98-2.324h-2.324v10.36m8.484-3.892c0 1.904 1.358 4.13 4.186 4.13 2.828 0 4.186-2.226 4.186-4.13 0-1.904-1.358-4.13-4.186-4.13-2.828 0-4.186 2.226-4.186 4.116v.014m2.324 0c0-1.134.854-1.96 1.862-1.96 1.01 0 1.862.826 1.862 1.96 0 1.134-.854 1.96-1.862 1.96-1.01 0-1.862-.826-1.862-1.946v-.014m9 3.892h2.156l1.302-5.03 1.33 5.03h2.156l2.38-7.77h-2.394l-1.162 4.83-1.316-4.83h-1.96l-1.274 4.83-1.19-4.83h-2.408l2.38 7.77" fill="#ecedf0"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 11 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Spec Mode - Automating Sketch Prototype Handoffs + Documentation"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75714-spec-mode--automating-sketch-prototype-handoffs--documentation'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">10</span><span class="story-upvote-button-number upvoted-number">11</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://www.uxpin.com/products/project-tracking-developer-handoff-tools/spec-mode" alt="Spec Mode - Automating Sketch Prototype Handoffs + Documentation" class=montana-item-title story_title="Spec Mode - Automating Sketch Prototype Handoffs + Documentation"> Spec Mode - Automating Sketch Prototype Handoffs + Documentation <span class=list-story-domain>(uxpin.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75714-spec-mode--automating-sketch-prototype-handoffs--documentation" class=list-story-comment-count>4 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476973643 title="2016-10-20T14:27:23Z">11 hours ago</abbr><span>from <a href="/users/17306/marcin-treder" data-card=17306>Marcin Treder</a>, CEO</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75720>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 9 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Nintendo Switch"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75720-nintendo-switch'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">8</span><span class="story-upvote-button-number upvoted-number">9</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://www.nintendo.com/switch" alt="Nintendo Switch" class=montana-item-title story_title="Nintendo Switch"> Nintendo Switch <span class=list-story-domain>(nintendo.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75720-nintendo-switch" class=list-story-comment-count>2 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476980937 title="2016-10-20T16:28:57Z">10 hours ago</abbr><span>from <a href="/users/275/matt-stuhff" data-card=275>Matt Stuhff</a>, Customer Advocate</span></div>
+                              </div>
+                          </li>
+                          <div id=feed-motd-container data-id=2135>
+                              <p id=feed-motd-content><span id=feed-motd-left-quote>&#8220;</span><span id=feed-motd-message>If you catch a man a fish, you can sell it to him. Teach a man to fish, and you’ve ruined a wonderful Business opportunity - Karl Marx</span> &#8221; <span id=feed-motd-author>&nbsp;&mdash;&nbsp;<a href="/users/28886/connor-norvell" data-card=28886>Connor N.</a></span></p>
+                          </div>
+                          <li class="story-list-item montana-list-item " data-story-id=75699>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/design">
+                                      <svg aria-label=design-story-badge height=50 id=svg-design-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#f3b114" cx="25.5" cy="25.5" r=25 />
+                                          <path d="m12.353 13.177c.757-.715 1.571-1.885 4.256-2.177h17.793c1.888.127 3.536 1.119 4.469 2.469 1.092 1.636 1.13 2.906 1.13 3.531h-28.994c-.03-1.404.552-2.849 1.346-3.823" fill="#ecedf0"/>
+                                          <path d="m12.603 38.1c-1.159-1.25-1.497-2.61-1.603-3.695v-17.401h29v17.35c-.174 2.129-1.15 3.283-1.787 3.939-.683.627-1.934 1.6-3.898 1.711h-17.766c-1.724-.198-2.802-.785-3.947-1.904" fill="#fff"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 14 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Du Haihang Portfolio"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75699-du-haihang-portfolio'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">13</span><span class="story-upvote-button-number upvoted-number">14</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://www.duhaihang.com" alt="Du Haihang Portfolio" class=montana-item-title story_title="Du Haihang Portfolio"> Du Haihang Portfolio <span class=list-story-domain>(duhaihang.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75699-du-haihang-portfolio" class=list-story-comment-count>20 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476954943 title="2016-10-20T09:15:43Z">18 hours ago</abbr><span>from <a href="/users/6193/bertrand-bruandet" data-card=6193>Bertrand Bruandet</a>, Designer@Hypershoot.com</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75706>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/show">
+                                      <svg aria-label=show-story-badge height=50 id=svg-show-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#d9392b" cx=25 cy=25 r=25 />
+                                          <path d="m6.103 26.626c-.07 2.03 1.022 3.626 3.738 3.626 2.744 0 3.612-1.666 3.612-3.318 0-1.204-.49-2.1-2.422-2.968-1.862-.84-2.142-.966-2.142-1.442 0-.49.448-.812.91-.812.812 0 .896.658.952 1.01h2.618c-.042-2.492-2.058-3.22-3.486-3.22-1.736 0-3.626 1.106-3.626 3.192 0 1.946 1.806 2.674 2.534 2.968 1.596.672 2.03.84 2.03 1.386 0 .476-.378.994-1.01.994-.336 0-1.078-.21-1.078-1.414h-2.632m8.512 3.43h2.324v-4.312c0-.196 0-.574.168-.91.154-.336.49-.63 1.134-.63.504 0 .812.196 1.01.49.182.294.238.7.238 1.134v4.228h2.324v-4.34c0-.994-.112-1.918-.532-2.59-.42-.686-1.12-1.106-2.31-1.106-.826 0-1.61.28-2.03.98v-.98-2.324h-2.324v10.36m8.484-3.892c0 1.904 1.358 4.13 4.186 4.13 2.828 0 4.186-2.226 4.186-4.13 0-1.904-1.358-4.13-4.186-4.13-2.828 0-4.186 2.226-4.186 4.116v.014m2.324 0c0-1.134.854-1.96 1.862-1.96 1.01 0 1.862.826 1.862 1.96 0 1.134-.854 1.96-1.862 1.96-1.01 0-1.862-.826-1.862-1.946v-.014m9 3.892h2.156l1.302-5.03 1.33 5.03h2.156l2.38-7.77h-2.394l-1.162 4.83-1.316-4.83h-1.96l-1.274 4.83-1.19-4.83h-2.408l2.38 7.77" fill="#ecedf0"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 8 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Portfolio — Filippo Donisi"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75706-portfolio--filippo-donisi'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">7</span><span class="story-upvote-button-number upvoted-number">8</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="/stories/75706-portfolio--filippo-donisi" alt="Portfolio — Filippo Donisi" class=montana-item-title story_title="Portfolio — Filippo Donisi">Portfolio — Filippo Donisi</a>
+                                  <div class=montana-item-meta><a href="/stories/75706-portfolio--filippo-donisi" class=list-story-comment-count>11 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476967747 title="2016-10-20T12:49:07Z">8 hours ago</abbr><span>from <a href="/users/28183/filippo-donisi" data-card=28183>Filippo Donisi</a>, Lead Designer</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75725>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 6 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "What I learned at Basecamp last week…"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75725-what-i-learned-at-basecamp-last-week'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">5</span><span class="story-upvote-button-number upvoted-number">6</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://medium.com/@letsworkshop/what-i-learned-at-basecamp-last-week-9961736a3672#.ypourjc34" alt="What I learned at Basecamp last week…" class=montana-item-title story_title="What I learned at Basecamp last week…"> What I learned at Basecamp last week… <span class=list-story-domain>(medium.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75725-what-i-learned-at-basecamp-last-week" class=list-story-comment-count>0 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476985893 title="2016-10-20T17:51:33Z">7 hours ago</abbr><span>from <a href="/users/7164/john-park" data-card=7164>John Park</a>, Creative Director at Arts and Sciences Marketing www.artsandsci.com</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75709>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/design">
+                                      <svg aria-label=design-story-badge height=50 id=svg-design-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#f3b114" cx="25.5" cy="25.5" r=25 />
+                                          <path d="m12.353 13.177c.757-.715 1.571-1.885 4.256-2.177h17.793c1.888.127 3.536 1.119 4.469 2.469 1.092 1.636 1.13 2.906 1.13 3.531h-28.994c-.03-1.404.552-2.849 1.346-3.823" fill="#ecedf0"/>
+                                          <path d="m12.603 38.1c-1.159-1.25-1.497-2.61-1.603-3.695v-17.401h29v17.35c-.174 2.129-1.15 3.283-1.787 3.939-.683.627-1.934 1.6-3.898 1.711h-17.766c-1.724-.198-2.802-.785-3.947-1.904" fill="#fff"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 8 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Site Design: Civilization IV"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75709-site-design-civilization-iv'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">7</span><span class="story-upvote-button-number upvoted-number">8</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://www.civiv.com/" alt="Site Design: Civilization IV" class=montana-item-title story_title="Site Design: Civilization IV"> Site Design: Civilization IV <span class=list-story-domain>(civiv.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75709-site-design-civilization-iv" class=list-story-comment-count>3 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476970011 title="2016-10-20T13:26:51Z">15 hours ago</abbr><span>from <a href="/users/484/sam-solomon" data-card=484>Sam Solomon</a>, Host of DN FM, Product Designer at Trustfuel</span></div>
+                              </div>
+                          </li>
+                          <div id=feed-digest-signup>
+                              <div id=feed-digest-signup-info>
+                                  <h3>Designer News Digest</h3>
+                                  <p>The best stories of the week, delivered right to your inbox. No spam, we promise.</p>
+                              </div>
+                              <a href="/subscriptions/new" class="standard-button yellow">Subscribe</a>
+                          </div>
+                          <li class="story-list-item montana-list-item " data-story-id=75737>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 4 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Ustwo Rethinks the Agency Business Model"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75737-ustwo-rethinks-the-agency-business-model'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">3</span><span class="story-upvote-button-number upvoted-number">4</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://99u.com/articles/54497/ustwo-rethinks-the-agency-business-model" alt="Ustwo Rethinks the Agency Business Model" class=montana-item-title story_title="Ustwo Rethinks the Agency Business Model"> Ustwo Rethinks the Agency Business Model <span class=list-story-domain>(99u.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75737-ustwo-rethinks-the-agency-business-model" class=list-story-comment-count>0 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1477000164 title="2016-10-20T21:49:24Z">5 hours ago</abbr><span>from <a href="/users/20126/moe-amaya" data-card=20126>Moe Amaya</a>, Dixon &amp; Moe</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75742>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/design">
+                                      <svg aria-label=design-story-badge height=50 id=svg-design-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#f3b114" cx="25.5" cy="25.5" r=25 />
+                                          <path d="m12.353 13.177c.757-.715 1.571-1.885 4.256-2.177h17.793c1.888.127 3.536 1.119 4.469 2.469 1.092 1.636 1.13 2.906 1.13 3.531h-28.994c-.03-1.404.552-2.849 1.346-3.823" fill="#ecedf0"/>
+                                          <path d="m12.603 38.1c-1.159-1.25-1.497-2.61-1.603-3.695v-17.401h29v17.35c-.174 2.129-1.15 3.283-1.787 3.939-.683.627-1.934 1.6-3.898 1.711h-17.766c-1.724-.198-2.802-.785-3.947-1.904" fill="#fff"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 3 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Xmog.com Redesign"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75742-xmogcom-redesign'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">2</span><span class="story-upvote-button-number upvoted-number">3</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="/stories/75742-xmogcom-redesign" alt="Xmog.com Redesign" class=montana-item-title story_title="Xmog.com Redesign">Xmog.com Redesign</a>
+                                  <div class=montana-item-meta><a href="/stories/75742-xmogcom-redesign" class=list-story-comment-count>0 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1477011596 title="2016-10-21T00:59:56Z">4 minutes ago</abbr><span>from <a href="/users/34355/rebecca-tomino" data-card=34355>Rebecca Tomino</a>, Visual Designer at Transmogrify</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75710>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/show">
+                                      <svg aria-label=show-story-badge height=50 id=svg-show-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#d9392b" cx=25 cy=25 r=25 />
+                                          <path d="m6.103 26.626c-.07 2.03 1.022 3.626 3.738 3.626 2.744 0 3.612-1.666 3.612-3.318 0-1.204-.49-2.1-2.422-2.968-1.862-.84-2.142-.966-2.142-1.442 0-.49.448-.812.91-.812.812 0 .896.658.952 1.01h2.618c-.042-2.492-2.058-3.22-3.486-3.22-1.736 0-3.626 1.106-3.626 3.192 0 1.946 1.806 2.674 2.534 2.968 1.596.672 2.03.84 2.03 1.386 0 .476-.378.994-1.01.994-.336 0-1.078-.21-1.078-1.414h-2.632m8.512 3.43h2.324v-4.312c0-.196 0-.574.168-.91.154-.336.49-.63 1.134-.63.504 0 .812.196 1.01.49.182.294.238.7.238 1.134v4.228h2.324v-4.34c0-.994-.112-1.918-.532-2.59-.42-.686-1.12-1.106-2.31-1.106-.826 0-1.61.28-2.03.98v-.98-2.324h-2.324v10.36m8.484-3.892c0 1.904 1.358 4.13 4.186 4.13 2.828 0 4.186-2.226 4.186-4.13 0-1.904-1.358-4.13-4.186-4.13-2.828 0-4.186 2.226-4.186 4.116v.014m2.324 0c0-1.134.854-1.96 1.862-1.96 1.01 0 1.862.826 1.862 1.96 0 1.134-.854 1.96-1.862 1.96-1.01 0-1.862-.826-1.862-1.946v-.014m9 3.892h2.156l1.302-5.03 1.33 5.03h2.156l2.38-7.77h-2.394l-1.162 4.83-1.316-4.83h-1.96l-1.274 4.83-1.19-4.83h-2.408l2.38 7.77" fill="#ecedf0"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 8 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Designing a Times Square Billboard Overnight"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75710-designing-a-times-square-billboard-overnight'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">7</span><span class="story-upvote-button-number upvoted-number">8</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://www.ceros.com/blog/designing-times-square-billboard-overnight/" alt="Designing a Times Square Billboard Overnight" class=montana-item-title story_title="Designing a Times Square Billboard Overnight"> Designing a Times Square Billboard Overnight <span class=list-story-domain>(ceros.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75710-designing-a-times-square-billboard-overnight" class=list-story-comment-count>0 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476970275 title="2016-10-20T13:31:15Z">11 hours ago</abbr><span>from <a href="/users/51435/andrew-littlefield" data-card=51435>Andrew Littlefield</a>, Content Marketing Manager</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75724>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/design">
+                                      <svg aria-label=design-story-badge height=50 id=svg-design-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#f3b114" cx="25.5" cy="25.5" r=25 />
+                                          <path d="m12.353 13.177c.757-.715 1.571-1.885 4.256-2.177h17.793c1.888.127 3.536 1.119 4.469 2.469 1.092 1.636 1.13 2.906 1.13 3.531h-28.994c-.03-1.404.552-2.849 1.346-3.823" fill="#ecedf0"/>
+                                          <path d="m12.603 38.1c-1.159-1.25-1.497-2.61-1.603-3.695v-17.401h29v17.35c-.174 2.129-1.15 3.283-1.787 3.939-.683.627-1.934 1.6-3.898 1.711h-17.766c-1.724-.198-2.802-.785-3.947-1.904" fill="#fff"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 4 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "New &quot;Kill the Sidebar&quot; concept for WordPress bloggers"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75724-new-kill-the-sidebar-concept-for-wordpress-bloggers'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">3</span><span class="story-upvote-button-number upvoted-number">4</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://daze.nordwoodthemes.com/" alt="New &#x27;Kill the Sidebar&#x27; concept for WordPress bloggers" class=montana-item-title story_title="New &quot;Kill the Sidebar&quot; concept for WordPress bloggers"> New &quot;Kill the Sidebar&quot; concept for WordPress bloggers <span class=list-story-domain>(daze.nordwoodthemes.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75724-new-kill-the-sidebar-concept-for-wordpress-bloggers" class=list-story-comment-count>2 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476984860 title="2016-10-20T17:34:20Z">5 hours ago</abbr><span>from <a href="/users/52831/nordwood-themes" data-card=52831>NordWood Themes</a></span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75669>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/design">
+                                      <svg aria-label=design-story-badge height=50 id=svg-design-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#f3b114" cx="25.5" cy="25.5" r=25 />
+                                          <path d="m12.353 13.177c.757-.715 1.571-1.885 4.256-2.177h17.793c1.888.127 3.536 1.119 4.469 2.469 1.092 1.636 1.13 2.906 1.13 3.531h-28.994c-.03-1.404.552-2.849 1.346-3.823" fill="#ecedf0"/>
+                                          <path d="m12.603 38.1c-1.159-1.25-1.497-2.61-1.603-3.695v-17.401h29v17.35c-.174 2.129-1.15 3.283-1.787 3.939-.683.627-1.934 1.6-3.898 1.711h-17.766c-1.724-.198-2.802-.785-3.947-1.904" fill="#fff"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 79 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Stripe: Radar"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75669-stripe-radar'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">78</span><span class="story-upvote-button-number upvoted-number">79</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://stripe.com/radar" alt="Stripe: Radar" class=montana-item-title story_title="Stripe: Radar"> Stripe: Radar <span class=list-story-domain>(stripe.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75669-stripe-radar" class=list-story-comment-count>17 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476895678 title="2016-10-19T16:47:58Z">1 day ago</abbr><span>from <a href="/users/1641/jonathan-suh" data-card=1641>Jonathan Suh</a>, Front-end Designer/Developer at Planning Center</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75700>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 7 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Nearly there"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75700-nearly-there'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">6</span><span class="story-upvote-button-number upvoted-number">7</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://blog.mozilla.org/opendesign/nearly-there/" alt="Nearly there" class=montana-item-title story_title="Nearly there"> Nearly there <span class=list-story-domain>(blog.mozilla.org)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75700-nearly-there" class=list-story-comment-count>7 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476957759 title="2016-10-20T10:02:39Z">16 hours ago</abbr><span>from <a href="/users/41385/oliver-russell" data-card=41385>Oliver Russell</a>, Designer</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75715>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 5 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Some nice palettes for inspiration."'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75715-some-nice-palettes-for-inspiration'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">4</span><span class="story-upvote-button-number upvoted-number">5</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://luyu.co/work/positive-words/" alt="Some nice palettes for inspiration." class=montana-item-title story_title="Some nice palettes for inspiration."> Some nice palettes for inspiration. <span class=list-story-domain>(luyu.co)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75715-some-nice-palettes-for-inspiration" class=list-story-comment-count>1 comment</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476973891 title="2016-10-20T14:31:31Z">8 hours ago</abbr><span>from <a href="/users/40988/mak-raz" data-card=40988>Mak Raz</a>, Web Developer</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75681>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/apple">
+                                      <svg aria-label=apple-story-badge height=50 id=svg-apple-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#c3c9d2" cx=25 cy=25 r=25 />
+                                          <g fill="#121720">
+                                              <path d="m17.05 26c0 1.981 0 2.776 0 4.992h-7.06c-4.01 0-6.707 1.667-7.554 4.784 3.805 8.184 12.721 14.225 22.349 14.225 10 0 18.622-5.594 22.776-14.225-1.555-2.738-3.597-4.784-7.547-4.784h-6.967c0-.757 0-4.474 0-4.992-2.693 0-5.81 0-8.88 0h-7.119"/>
+                                              <path d="m33.992 12c-.129 1.955-1.755 3.5-3.742 3.5-1.987 0-3.613-1.545-3.742-3.5h-3.02c-.129 1.955-1.755 3.5-3.742 3.5-1.987 0-3.613-1.545-3.742-3.5h-1.508v-1h1.575c.347-1.712 1.861-3 3.675-3 1.814 0 3.328 1.288 3.675 3h3.15c.347-1.712 1.861-3 3.675-3 1.814 0 3.328 1.288 3.675 3h1.575v1h-1.508m-14.242 2.75c1.657 0 3-1.343 3-3 0-1.657-1.343-3-3-3-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3m10.5 0c1.657 0 3-1.343 3-3 0-1.657-1.343-3-3-3-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3"/>
+                                          </g>
+                                          </g>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 33 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Apple Event: hello again"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75681-apple-event-hello-again'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">32</span><span class="story-upvote-button-number upvoted-number">33</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://www.apple.com/apple-events/october-2016/" alt="Apple Event: hello again" class=montana-item-title story_title="Apple Event: hello again"> Apple Event: hello again <span class=list-story-domain>(apple.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75681-apple-event-hello-again" class=list-story-comment-count>27 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476908895 title="2016-10-19T20:28:15Z">1 day ago</abbr><span>from <a href="/users/8285/andreas-storm" data-card=8285>Andreas Storm</a>, Designer</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75693>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/show">
+                                      <svg aria-label=show-story-badge height=50 id=svg-show-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#d9392b" cx=25 cy=25 r=25 />
+                                          <path d="m6.103 26.626c-.07 2.03 1.022 3.626 3.738 3.626 2.744 0 3.612-1.666 3.612-3.318 0-1.204-.49-2.1-2.422-2.968-1.862-.84-2.142-.966-2.142-1.442 0-.49.448-.812.91-.812.812 0 .896.658.952 1.01h2.618c-.042-2.492-2.058-3.22-3.486-3.22-1.736 0-3.626 1.106-3.626 3.192 0 1.946 1.806 2.674 2.534 2.968 1.596.672 2.03.84 2.03 1.386 0 .476-.378.994-1.01.994-.336 0-1.078-.21-1.078-1.414h-2.632m8.512 3.43h2.324v-4.312c0-.196 0-.574.168-.91.154-.336.49-.63 1.134-.63.504 0 .812.196 1.01.49.182.294.238.7.238 1.134v4.228h2.324v-4.34c0-.994-.112-1.918-.532-2.59-.42-.686-1.12-1.106-2.31-1.106-.826 0-1.61.28-2.03.98v-.98-2.324h-2.324v10.36m8.484-3.892c0 1.904 1.358 4.13 4.186 4.13 2.828 0 4.186-2.226 4.186-4.13 0-1.904-1.358-4.13-4.186-4.13-2.828 0-4.186 2.226-4.186 4.116v.014m2.324 0c0-1.134.854-1.96 1.862-1.96 1.01 0 1.862.826 1.862 1.96 0 1.134-.854 1.96-1.862 1.96-1.01 0-1.862-.826-1.862-1.946v-.014m9 3.892h2.156l1.302-5.03 1.33 5.03h2.156l2.38-7.77h-2.394l-1.162 4.83-1.316-4.83h-1.96l-1.274 4.83-1.19-4.83h-2.408l2.38 7.77" fill="#ecedf0"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 12 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "Administrator: Dashboard design starter pack"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75693-administrator-dashboard-design-starter-pack'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">11</span><span class="story-upvote-button-number upvoted-number">12</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://administrator.design" alt="Administrator: Dashboard design starter pack" class=montana-item-title story_title="Administrator: Dashboard design starter pack"> Administrator: Dashboard design starter pack <span class=list-story-domain>(administrator.design)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75693-administrator-dashboard-design-starter-pack" class=list-story-comment-count>0 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476945185 title="2016-10-20T06:33:05Z">12 hours ago</abbr><span>from <a href="/users/36960/great-simple" data-card=36960>Great Simple</a></span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75731>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/podcast">
+                                      <svg aria-label=podcast-story-badge height=50 id=svg-podcast-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#f3b115" cx=25 cy=25 r=25 />
+                                          <rect fill="#eceef1" x=17 y=9 width=16 height=26 rx=8 />
+                                          <path d="m19 17v-.003c0-3.312 2.693-5.997 6-5.997 3.314 0 6 2.687 6 5.997v.003h-4v2h4v2h-4v2h4v2h-4v2h4v.003c0 3.312-2.693 5.997-6 5.997-3.314 0-6-2.687-6-5.997v-.003h4v-2h-4v-2h4v-2h-4v-2h4v-2h-4m7 17.938c3.94-.493 7-3.857 7-7.933v-10.01c0-4.407-3.582-7.995-8-7.995-4.409 0-8 3.58-8 7.995v10.01c0 4.07 3.054 7.44 7 7.933v5.062h2v-5.062m-5 5.062h8v2h-8v-2" fill="#121821"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 3 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "The Hacking UI Podcast #19 - David Okuniev (Typeform)"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75731-the-hacking-ui-podcast-19--david-okuniev-typeform'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">2</span><span class="story-upvote-button-number upvoted-number">3</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="http://hackingui.com/podcast/the-rockstar-who-turned-a-side-project-into-a-multi-million-dollar-company-david-okuniev-typeform/" alt="The Hacking UI Podcast #19 - David Okuniev (Typeform)" class=montana-item-title story_title="The Hacking UI Podcast #19 - David Okuniev (Typeform)"> The Hacking UI Podcast #19 - David Okuniev (Typeform) <span class=list-story-domain>(hackingui.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75731-the-hacking-ui-podcast-19--david-okuniev-typeform" class=list-story-comment-count>1 comment</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476991947 title="2016-10-20T19:32:27Z">2 hours ago</abbr><span>from <a href="/users/8821/david-tintner" data-card=8821>David Tintner</a>, Cofounder @ HackingUI.com</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75713>
+                              <div class=list-story-badge-grouper>
+                                  <a href="/badges/video">
+                                      <svg aria-label=video-story-badge height=50 id=svg-video-story-badge role=img version="1.1" viewBox="0 0 50 50" width=50>
+                                          <circle fill="#121720" cx="25.5" cy=25 r=25 />
+                                          <rect fill="#dbdfe4" x=9 y=13 width=33 height="4.5" rx=3 ry="2.25"/>
+                                          <path fill="#fff" d="m11 17.5h29v20.5h-29z"/>
+                                          <path d="m25.75 42.5c1.243 0 2.25-1.01 2.25-2.25 0-1.243-1.01-2.25-2.25-2.25-1.243 0-2.25 1.01-2.25 2.25 0 1.243 1.01 2.25 2.25 2.25m0-.75c.828 0 1.5-.672 1.5-1.5 0-.828-.672-1.5-1.5-1.5-.828 0-1.5.672-1.5 1.5 0 .828.672 1.5 1.5 1.5" fill="#c3c9d2"/>
+                                      </svg>
+                                  </a>
+                              </div>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 4 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "The ethical dilemma of self-driving cars"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75713-the-ethical-dilemma-of-selfdriving-cars'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">3</span><span class="story-upvote-button-number upvoted-number">4</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://www.youtube.com/watch?v=ixIoDYVfKA0" alt="The ethical dilemma of self-driving cars" class=montana-item-title story_title="The ethical dilemma of self-driving cars"> The ethical dilemma of self-driving cars <span class=list-story-domain>(youtube.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75713-the-ethical-dilemma-of-selfdriving-cars" class=list-story-comment-count>4 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476973324 title="2016-10-20T14:22:04Z">6 hours ago</abbr><span>from <a href="/users/5407/suganth-s" data-card=5407>Suganth S</a>, Product Designer at Carousell</span></div>
+                              </div>
+                          </li>
+                          <li class="story-list-item montana-list-item " data-story-id=75696>
+                              <div class="list-story-grouper list-story-upvote-grouper">
+                                  <button aria-label="Upvote this story to 7 points" class="story-upvote-button toggle-login" itemscope=true itemtype="http://schema.org/LikeAction">
+                                      <meta itemprop=name content='Upvote "WordPress Without Shame"'>
+                                      <meta itemprop=url content='https://www.designernews.co/stories/75696-wordpress-without-shame'>
+                                      <svg aria-label=up-arrow class=upvote-up-arrow height=7 id=svg-up-arrow role=img version="1.1" viewBox="0 0 11 7" width=11>
+                                          <path d="m.202 5.715c-.367.417-.217.755.329.755h9.438c.549 0 .702-.33.338-.742l-4.41-4.985c-.363-.41-.947-.412-1.322.013l-4.373 4.96"/>
+                                      </svg>
+                                      <span class="story-upvote-button-number unvoted-number">6</span><span class="story-upvote-button-number upvoted-number">7</span>
+                                  </button>
+                              </div>
+                              <div class="list-story-grouper list-story-main-grouper">
+                                  <a href="https://trackchanges.postlight.com/wordpress-without-shame-fedc1a2fef72#.8x96ymkhy" alt="WordPress Without Shame" class=montana-item-title story_title="WordPress Without Shame"> WordPress Without Shame <span class=list-story-domain>(trackchanges.postlight.com)</span></a>
+                                  <div class=montana-item-meta><a href="/stories/75696-wordpress-without-shame" class=list-story-comment-count>0 comments</a><span class=montana-item-meta-bullet>&bull;</span><abbr class="list-story-time-ago time-ago" data-time=1476950785 title="2016-10-20T08:06:25Z">12 hours ago</abbr><span>from <a href="/users/24630/lee-hord" data-card=24630>Lee Hord</a>, UX Designer</span></div>
+                              </div>
+                          </li>
+                      </ul>
+                      <div class=montana-list-pagination><a href="/p/2" class=montana-list-pagination-next>Next</a></div>
+                  </div>
+                  <div id=mobile-sidebar-listings-feed-container>
+                      <div class="mobile-sidebar-block sidebar-job-listings-outer" data-mobile-sidebar-collapsable=true data-mobile-sidebar-collapsed=false data-mobile-sidebar=job_listings>
+                          <div class=mobile-sidebar-block-toggle-bar><span>Latest Design Jobs</span></div>
+                          <div class="mobile-sidebar-block-inner sidebar-job-listings"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <aside id=page-sidebar-content>
+              <div id=page-sidebar-inner>
+                  <div class="sidebar-block sidebar-ad-block" data-sidebar-block=ad_block>
+                     
+                  </div>
+                  <div class="sidebar-block sidebar-podcast-episode" data-sidebar-block=podcast_episode>
+                      <h3>Latest on DN FM</h3>
+                      <div class=sidebar-latest-podcast-container>
+                          <span id=sidebar-latest-podcast-thumbnail-container>
+                              <button class=episode-item-play-button id=sidebar-latest-podcast-play-button data-episode='{&quot;thumbnail&quot;:&quot;https://designer-news-external.imgix.net/https://media.simplecast.com/episode/image/48335/small_1474731376-artwork.jpg?w=48&amp;h=48&amp;dpr=2&amp;s=d6faaf8ba6a52f3473ded3f056d3cbd7&quot;,&quot;title&quot;:&quot;DN FM 007: Randy J. Hunt on true user-empathy and lessons learned growing Etsy &quot;,&quot;episode_number&quot;:&quot;007&quot;,&quot;audio_location&quot;:&quot;http://audio.simplecast.com/48335.mp3&quot;,&quot;id&quot;:&quot;48335&quot;}'>
+                                  <svg aria-label=play class=sidebar-episode-playback-play height=35 id=svg-play role=img version="1.1" viewBox="0 0 24 35" width=24>
+                                      <path d="m1.315 35.01c3.879-2.909 15.397-11.548 21.716-16.287.323-.242.334-1.203.017-1.442-6.282-4.712-17.702-13.276-21.656-16.242-.881-.661-1.392-.341-1.392.01v33.971c0 .325.481.615 1.315-.011"/>
+                                  </svg>
+                              </button>
+                              <div id=sidebar-latest-podcast-thumbnail style="background-image:url(https://designer-news-external.imgix.net/https://media.simplecast.com/episode/image/48335/1474731376-artwork.jpg?w=50&amp;h=50&amp;dpr=2&amp;s=a8fcab3fb8f383494fcbec7e2955f5b2)"></div>
+                          </span>
+                          <a href="/podcast/48335" id=sidebar-latest-podcast-titles>
+                              <p id=sidebar-latest-podcast-titles-episode-date>October 17</p>
+                              <p id=sidebar-latest-podcast-titles-episode-title>007: Randy J. Hunt on true user-empathy and lessons...</p>
+                          </a>
+                      </div>
+                  </div>
+                  <div class="sidebar-block sidebar-job-listings" data-sidebar-block=job_listings>
+                      <h3 class=mobile-sidebar-hidden>On the Job Board</h3>
+                      <ul id=sidebar-job-listings>
+                          <li class=sidebar-job-listing>
+                              <a href="https://boards.greenhouse.io/voxmedia/jobs/484353?gh_jid=484353#.WAenHqOZPUq" class=sidebar-job-listing-link>
+                                  <p class=sidebar-job-listing-superline>Vox Product</p>
+                                  <h4 class=sidebar-job-listing-title>Senior Designer</h4>
+                              </a>
+                          </li>
+                          <li class=sidebar-job-listing>
+                              <a href="http://careers.getyourguide.com/product-designer-uiux?gh_jid=460121" class=sidebar-job-listing-link>
+                                  <p class=sidebar-job-listing-superline>GetYourGuide</p>
+                                  <h4 class=sidebar-job-listing-title>(Senior) Product Designer</h4>
+                              </a>
+                          </li>
+                          <li class=sidebar-job-listing>
+                              <a href="https://servicetitan.com/careers?p=job%2Fopb23fwp" class=sidebar-job-listing-link>
+                                  <p class=sidebar-job-listing-superline>ServiceTitan, Inc</p>
+                                  <h4 class=sidebar-job-listing-title>Junior Product Designer</h4>
+                              </a>
+                          </li>
+                          <li class=sidebar-job-listing>
+                              <a href="https://invision.workable.com/jobs/336122" class=sidebar-job-listing-link>
+                                  <p class=sidebar-job-listing-superline>InVision</p>
+                                  <h4 class=sidebar-job-listing-title>Design Researcher</h4>
+                              </a>
+                          </li>
+                          <li class=sidebar-job-listing>
+                              <a href="http://centerline.applytojob.com/apply/KjVz2z/Creative-Director" class=sidebar-job-listing-link>
+                                  <p class=sidebar-job-listing-superline>Centerline Digital</p>
+                                  <h4 class=sidebar-job-listing-title>Creative Director</h4>
+                              </a>
+                          </li>
+                      </ul>
+                      <a href="/jobs" class=sidebar-job-listings-more>View more...</a>
+                  </div>
+              </div>
+          </aside>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
