@@ -1,0 +1,17 @@
+{
+  "name": "manvendra-react-boilerplate",
+  "version": "1.0.0",
+  "description": "This is a custom boilerplace for react application, created by Manvendra singh",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
