@@ -1,0 +1,7 @@
+th {
+	text-align: left;
+}
+
+th, td {
+	width: 100px;
+}
