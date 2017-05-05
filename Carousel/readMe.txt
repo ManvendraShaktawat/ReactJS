@@ -1,29 +1,15 @@
-Steps for creating boilerplate:
+Steps to change the parameters of Carousel
 
-1. Install node and npm
-2. Install babel
-	- npm install -g babel
-	- npm install -g babel-cli
-3. Create a local directory and move into that directory
-4. Create package.json file
-	- npm init (use a unique name and set version to 1.0.0)
-5. Install webpack
-	- npm install webpack --save
-	- npm install webpack-dev-server --save
-6. Install react
-	- npm install react --save
-	- npm install react-dom --save
-7. Install Babel Pluggins
-	- npm install babel-core
-	- npm install babel-loader
-	- npm install babel-preset-react
-	- npm install babel-preset-es2015
-8. Manually Create 4 files
-	- webpack.config.js (copy the code as in)
-	- index.html (copy the code as in)
-	- App.jsx (copy the code as in)
-	- main.js (copy the code as in)
-9. Open package.json and 
-	- delete from scripts object: "test": "echo \"Error: no test specified\" && exit 1"
-	- add in scripts object: "start": "webpack-dev-server --hot"
-10. 
+1. Open main.js
+2. The default values of the parameters are:-
+	{
+		infiniteLoop: false,
+		speed: 500,
+		autoStart: false,
+		slideCount: IMAGES.length,
+		activeSlide: 1
+	}
+3. Pass the parameter with the new value as a prop inside the App component. For eg:-
+	<App speed={1000} />
+
+NOTE: The outermost div with the id "app" has to have fixed width and height, otherwise the Carousel would break. The responsive behaviour should also be defined inside this outer div. The Carousel will take the 100% width/height of this div.
