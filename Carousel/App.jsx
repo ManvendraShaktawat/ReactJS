@@ -17,15 +17,13 @@ class CarouselContainer extends React.Component {
 
     /* setting the default parameters */
     this.defaults = {
-      infiniteLoop: false,
       speed: 500,
       autoStart: false,
-      slideCount: IMAGES.length,
       activeSlide: 1,
-      carouselContainerWidth: "100%",
-      carouselContainerHeight: "100%"
+      isInfinite: true
     };
 
+    /* overriding the default parameters' values by user defined parameters' value provided in props */
     for(let property in this.props) {
       this.defaults[property] = this.props[property];
     }
@@ -46,30 +44,23 @@ class CarouselContainer extends React.Component {
   }
 
   componentDidMount() {
-    let newWidth,
-        _self = this,
+    let _self = this,
         images = carousel.getElementsByTagName('img');
 
     /* setting the options */
-    carouselContainer.style.width = this.defaults.carouselContainerWidth;
-    carouselContainer.style.height = this.defaults.carouselContainerHeight;
     Object.keys(images).forEach(function(image, index) {
       images[image].style.width = carouselContainer.parentElement.offsetWidth + "px";
       images[image].style.height = carouselContainer.parentElement.offsetHeight + "px";
     });
     carousel.style.transition = "left "+ this.defaults.speed +"ms";
-
+    /* making the automaticTransition span clickable (triggers checkbox click) */
     automaticTransition.querySelector('span').addEventListener("click", function() {
       toggleTransitionBtn.click();
     });
-
     /* adjusting the left offset of <ul> so that the cloned image gets out of the frame */
     carousel.style.left = "-" + (document.getElementsByTagName('li')[0].clientWidth * this.state.currentImageIndex) + "px";
-
     /* calculating the width of the carousel according to the inner images */    
-    newWidth = document.getElementsByTagName('li')[0].clientWidth * (IMAGES.length + 2);
-    carousel.style.width = newWidth + "px";
-    
+    carousel.style.width = document.getElementsByTagName('li')[0].clientWidth * (IMAGES.length + 2) + "px";
     /* adding a boolean to the current context which is true when no transition is going on, and false otherwise */
     this.isTransitionOver = true;
     carousel.addEventListener("transitionend", function(event) {
@@ -78,7 +69,7 @@ class CarouselContainer extends React.Component {
   }
 
   changeImageOnBulletClick(imageIndex) {
-    if(this.isTransitionOver) {
+    if(this.isTransitionOver && imageIndex !== this.state.currentImageIndex) {
       this.setState({
         currentImageIndex: imageIndex
       });
@@ -96,18 +87,22 @@ class CarouselContainer extends React.Component {
   /* handler which gets called on previous arrow click */
   showPreviousImage() {
     if(this.isTransitionOver && carousel.style.transition !== "none") {
-      this.arrowType = "previous";
-      this.changeImageState();
-      this.isTransitionOver = false;
+      if(this.defaults.isInfinite || this.state.currentImageIndex !== 1) {
+        this.arrowType = "previous";
+        this.changeImageState();
+        this.isTransitionOver = false;
+      }
     }
   }
 
   /* handler which gets called on next arrow click */
   showNextImage() {
     if(this.isTransitionOver && carousel.style.transition !== "none") {
-      this.arrowType = "next";
-      this.changeImageState();
-      this.isTransitionOver = false;
+      if(this.defaults.isInfinite || this.state.currentImageIndex !== IMAGES.length) {
+        this.arrowType = "next";
+        this.changeImageState();
+        this.isTransitionOver = false;
+      }
     }
   }
 
@@ -116,7 +111,6 @@ class CarouselContainer extends React.Component {
     this.setState({
       currentImageIndex: this.arrowType === "previous" ? this.state.currentImageIndex - 1 : this.state.currentImageIndex + 1
     });
-
     /* handling boundary cases */
     if(this.arrowType === "previous" && this.state.currentImageIndex === 1) {
       carousel.addEventListener("transitionend", this.repositionCarousel);
@@ -151,11 +145,9 @@ class CarouselContainer extends React.Component {
 
 /* Component which contains all the image slides */
 class Carousel extends React.Component {
-  /* This function is called initially when the component gets mounted */
   componentDidMount() {
     let firstClonedImage = carousel.firstChild.cloneNode(true);
     let lastClonedImage = carousel.lastChild.cloneNode(true);
-
     /* Adding cloned images at the beginning and end of the list */
     firstClonedImage.setAttribute("data-image-index", this.props.images.length + 1);
     carousel.appendChild(firstClonedImage);
@@ -248,46 +240,31 @@ class AutomaticTransition extends React.Component {
   }
 
   render() {
-    let isTransitionAutomatic = this.props.isTransitionAutomatic;
     return(
       <div id="automaticTransition">
-        <input type="checkbox" id="toggleTransitionBtn" onChange={this.props.toggleAutomaticTransition} checked={isTransitionAutomatic} />
+        <input type="checkbox" id="toggleTransitionBtn" onChange={this.props.toggleAutomaticTransition} checked={this.props.isTransitionAutomatic} />
         <span htmlFor="toggleTransitionBtn"> Automatic Transition</span>
       </div>
     );
   }
 }
 
-/* Component that contains the radio buttons to show the carousel progress */
+/* Component that contains the clickable radio buttons to show the carousel progress */
 class BulletFrame extends React.Component {
-  componentDidMount() {
-    bulletFrame.querySelector("input:nth-of-type("+ this.props.currentImageIndex +")").checked = true;
-  }
-
-  componentDidUpdate() {
-    let currentImageIndex = this.props.currentImageIndex;
-    
-    /* handling the boundary cases */
-    if(currentImageIndex === 0) {
-      currentImageIndex = this.props.images.length;
-    } else if(currentImageIndex === this.props.images.length + 1) {
-      currentImageIndex = 1;
-    }
-
-    /* setting the checked attribute value according to the in-frame image */
-    for(let imageIndex = 1; imageIndex <= this.props.images.length; imageIndex++) {
-      if(imageIndex === currentImageIndex) {
-        bulletFrame.querySelector("input:nth-of-type("+ imageIndex +")").checked = true;
-      } else {
-        bulletFrame.querySelector("input:nth-of-type("+ imageIndex +")").checked = false;
-      }
-    }
-  }
-
   render() {
     var _self = this;
-    var bulletList = this.props.images.map(function(item, index) {
-      return(<input type="radio" key={index} onClick={_self.props.changeImageOnBulletClick.bind(null, index+1)} />);
+    var checked;
+    var bulletList = _self.props.images.map(function(item, index) {
+      if(_self.props.currentImageIndex === (index + 1)) {
+        checked = true;
+      } else if(_self.props.currentImageIndex === 0 && index === (_self.props.images.length - 1)) {
+        checked = true;
+      } else if(_self.props.currentImageIndex === (_self.props.images.length + 1) && index === 0) {
+        checked = true;
+      } else {
+        checked = false;
+      }
+      return(<input type="radio" key={index} onChange={_self.props.changeImageOnBulletClick.bind(null, index+1)} checked={checked} />);
     });
 
     return(
