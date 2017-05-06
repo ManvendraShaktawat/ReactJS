@@ -22,8 +22,8 @@ class CarouselContainer extends React.Component {
       autoStart: false,
       slideCount: IMAGES.length,
       activeSlide: 1,
-      carouselContainerWidth: "100%",
-      carouselContainerHeight: "100%"
+      carouselContainerWidth: "50%",
+      carouselContainerHeight: "50%"
     };
 
     for(let property in this.props) {
@@ -42,6 +42,7 @@ class CarouselContainer extends React.Component {
     this.showNextImage = this.showNextImage.bind(this);
     this.changeImageState = this.changeImageState.bind(this);
     this.repositionCarousel = this.repositionCarousel.bind(this);
+    this.changeImageOnBulletClick = this.changeImageOnBulletClick.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +59,10 @@ class CarouselContainer extends React.Component {
     });
     carousel.style.transition = "left "+ this.defaults.speed +"ms";
 
+    automaticTransition.querySelector('span').addEventListener("click", function() {
+      toggleTransitionBtn.click();
+    });
+
     /* adjusting the left offset of <ul> so that the cloned image gets out of the frame */
     carousel.style.left = "-" + (document.getElementsByTagName('li')[0].clientWidth * this.state.currentImageIndex) + "px";
 
@@ -72,6 +77,15 @@ class CarouselContainer extends React.Component {
     });
   }
 
+  changeImageOnBulletClick(imageIndex) {
+    if(this.isTransitionOver) {
+      this.setState({
+        currentImageIndex: imageIndex
+      });
+      this.isTransitionOver = false;
+    }
+  }
+
   /* the state changer method for "isTransitionAutomatic" state */
   toggleAutomaticTransition() {
     this.setState({
@@ -81,7 +95,7 @@ class CarouselContainer extends React.Component {
 
   /* handler which gets called on previous arrow click */
   showPreviousImage() {
-    if(this.isTransitionOver) {
+    if(this.isTransitionOver && carousel.style.transition !== "none") {
       this.arrowType = "previous";
       this.changeImageState();
       this.isTransitionOver = false;
@@ -90,7 +104,7 @@ class CarouselContainer extends React.Component {
 
   /* handler which gets called on next arrow click */
   showNextImage() {
-    if(this.isTransitionOver) {
+    if(this.isTransitionOver && carousel.style.transition !== "none") {
       this.arrowType = "next";
       this.changeImageState();
       this.isTransitionOver = false;
@@ -106,7 +120,7 @@ class CarouselContainer extends React.Component {
     /* handling boundary cases */
     if(this.arrowType === "previous" && this.state.currentImageIndex === 1) {
       carousel.addEventListener("transitionend", this.repositionCarousel);
-    } else if(this.arrowType === "next" && this.state.currentImageIndex === 5) {
+    } else if(this.arrowType === "next" && this.state.currentImageIndex === IMAGES.length) {
       carousel.addEventListener("transitionend", this.repositionCarousel);
     }
   }
@@ -129,7 +143,7 @@ class CarouselContainer extends React.Component {
           <RightArrow slideImage={this.showNextImage} arrowImage={ARROW} />
         </div>
         <AutomaticTransition speed={this.defaults.speed} isTransitionAutomatic={this.state.isTransitionAutomatic} toggleAutomaticTransition={this.toggleAutomaticTransition} />
-        <BulletFrame images={IMAGES} currentImageIndex={this.state.currentImageIndex} />
+        <BulletFrame images={IMAGES} currentImageIndex={this.state.currentImageIndex} changeImageOnBulletClick={this.changeImageOnBulletClick} />
       </div>
     );
   }
@@ -158,7 +172,7 @@ class Carousel extends React.Component {
     leftOffset = document.getElementsByTagName('li')[0].clientWidth * (_self.props.currentImageIndex);
     carousel.style.left = "-" + leftOffset + "px";
     setTimeout(function() {
-      carousel.style.transition = "left "+ _self.props.speed +"ms";  
+      carousel.style.transition = "left "+ _self.props.speed +"ms";
     });
   }
 
@@ -273,7 +287,7 @@ class BulletFrame extends React.Component {
   render() {
     var _self = this;
     var bulletList = this.props.images.map(function(item, index) {
-      return(<input type="radio" disabled key={index} />);
+      return(<input type="radio" key={index} onClick={_self.props.changeImageOnBulletClick.bind(null, index+1)} />);
     });
 
     return(

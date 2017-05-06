@@ -55,6 +55,9 @@
 #automaticTransition input {
 	outline: none;
 }
+#automaticTransition input, #automaticTransition span {
+	cursor: pointer;
+}
 #bulletFrame {
 	float: right;
 	margin-top: 10px;
