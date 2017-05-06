@@ -22,8 +22,8 @@ class CarouselContainer extends React.Component {
       autoStart: false,
       slideCount: IMAGES.length,
       activeSlide: 1,
-      carouselContainerWidth: "50%",
-      carouselContainerHeight: "50%"
+      carouselContainerWidth: "100%",
+      carouselContainerHeight: "100%"
     };
 
     for(let property in this.props) {
